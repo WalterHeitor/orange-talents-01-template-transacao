@@ -4,6 +4,9 @@ public class EventoCartao {
 
 	private String id;
 	private String email;
+	
+	public EventoCartao() {	}
+	
 	public String getId() {
 		return id;
 	}

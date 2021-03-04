@@ -1,6 +1,7 @@
 package br.com.zup.transacao.transacao;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,14 +26,19 @@ public class Transacao {
     private Estabelecimento estabelecimento;
     @ManyToOne(cascade = CascadeType.ALL)
     private Cartao cartao;
+    
+    private LocalDateTime efetivadaEm;
+    
     @Deprecated
 	public Transacao() {	}
-	public Transacao(String idTransacao, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao) {
+	public Transacao(String idTransacao, BigDecimal valor, Estabelecimento estabelecimento,
+			Cartao cartao, LocalDateTime efetivadaEm) {
 		super();
 		this.idTransacao = idTransacao;
 		this.valor = valor;
 		this.estabelecimento = estabelecimento;
 		this.cartao = cartao;
+		this.efetivadaEm = efetivadaEm;
 	}
 	public Long getId() {
 		return id;
@@ -49,7 +55,9 @@ public class Transacao {
 	public Cartao getCartao() {
 		return cartao;
 	}
-	
+	public LocalDateTime getEfetivadaEm() {
+		return efetivadaEm;
+	}
     
 
 }

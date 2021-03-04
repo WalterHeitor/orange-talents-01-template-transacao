@@ -1,5 +1,7 @@
 package br.com.zup.transacao.config;
 
+import javax.transaction.Transactional;
+
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -28,10 +30,13 @@ public class ListenerDeTransacao {
 
 	@KafkaListener(topics = "${spring.kafka.topic.transactions}",
 			 groupId = "${spring.kafka.consumer.group-id}")
+	@Transactional
 	    public void ouvir(EventoDeTransacao eventoDeTransacao) {
 		 System.out.println("---------ouvindo----------");
 	        System.out.println("--------menssage" + eventoDeTransacao.toString());
 	        
 	     Transacao transacao = eventoDeTransacao.toModel(estabelecimentoRepository, cartaoRepository);
+	     transacaoRepository.save(transacao);
+	     System.out.println("Salvo com sucesso - "+transacao.getIdTransacao());
 	    }
 }
