@@ -1,4 +1,4 @@
-package br.com.zup.transacao.config;
+package br.com.zup.transacao.config.kafka;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

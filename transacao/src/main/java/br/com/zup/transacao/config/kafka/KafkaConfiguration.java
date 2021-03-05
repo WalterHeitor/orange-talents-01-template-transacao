@@ -1,4 +1,4 @@
-package br.com.zup.transacao.config;
+package br.com.zup.transacao.config.kafka;
 
 import java.util.HashMap;
 import java.util.Map;
